@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+ROOT="$(dirname "${BASH_SOURCE[0]-$0}")/.."
+
+deno run --allow-net "$ROOT/src/cli.ts" "$@"
