@@ -1,5 +1,6 @@
 import { Command } from "npm:commander"
 import { startServer } from "./commands/server.ts"
+import { AppError } from "./lib/types.ts"
 
 function main() {
   const program = new Command()
@@ -11,7 +12,7 @@ function main() {
   try {
     program.parse()
   } catch (e) {
-    if (e instanceof LayerError || e instanceof LayoutError) {
+    if (e instanceof AppError) {
       console.error(e.message)
       Deno.exit(1)
     } else {
